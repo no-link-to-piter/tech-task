@@ -1,0 +1,76 @@
+.sorters
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    &--search
+        display: flex
+        flex-direction: row
+        align-items: center
+        background: #F1F4F9
+        border: 1px solid #F1F4F9
+        transition: all .2s ease-in-out
+        border-radius: 48px
+        padding: 0 18px
+        height: 40px
+        min-height: 40px
+        width: 300px
+        input
+            width: 100%
+        svg
+            &.search-icon
+                height: 16px
+                min-height: 16px
+                width: 16px
+                margin-right: 12px
+                path
+                    transition: all .2s ease-in-out
+                    fill: #ADBFDF!important
+        &__close
+            display: flex
+            justify-content: center
+            align-items: center
+            width: 24px
+            height: 24px
+            min-height: 24px
+            opacity: 0
+            transition: all .2s ease-in-out
+            svg
+                height: 20px
+                min-height: 20px
+                min-width: 20px
+        &:hover
+            svg
+                &.search-icon
+                    path
+                        fill: #005FF8!important
+        &.is-active
+            background: #FFFFFF
+            border: 1px solid #EAF0FA
+            button
+                opacity: 1
+        &.is-focus
+            background: #FFFFFF
+            border: 1px solid #005FF8
+            svg
+                &.search-icon
+                    path
+                        fill: #ADBFDF!important
+    &--content
+        display: flex
+        flex-direction: row
+        align-items: center
+        margin-left: auto
+        &__btn
+            font-weight: 400
+            color: #5E7793
+            font-size: 14px
+            line-height: 148%
+            opacity: 0.87
+            font-family: 'SF Pro Display regular'
+            display: flex
+            flex-direction: row
+            align-items: center
+            margin-left: 32px
+            svg
+                margin-left: 8px

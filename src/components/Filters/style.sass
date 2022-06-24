@@ -1,0 +1,86 @@
+.filters
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: flex-end
+    margin: 20px 0
+    &--balance
+        display: flex
+        flex-direction: row
+        align-items: center
+        background: #FFFFFF
+        border-radius: 48px
+        margin-right: 48px
+        height: 40px
+        min-height: 40px
+        padding: 0 12px
+        &__text
+            display: flex
+            flex-direction: row
+            align-items: center
+            color: #899CB1
+            font-weight: 400
+            font-family: 'SF Pro Display regular'
+            font-size: 14px
+            line-height: 20px
+            span
+                color: #122945
+                font-weight: 500
+                font-family: 'SF Pro Display medium'
+                font-size: 14px
+                line-height: 20px
+                margin-left: 4px
+                transition: all .2s ease-in-out
+        &__btn
+            margin-left: 10px
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 24px
+            min-height: 24px
+            width: 24px
+            svg
+                height: 24px
+                min-height: 24px
+                width: 24px
+                path
+                    transition: all .2s ease-in-out
+                    fill: #005FF8!important
+        &:hover
+            span
+                color: #0024CB
+            svg
+                path
+                    fill: #0000F4!important
+                
+    &--calendar
+        display: flex
+        flex-direction: row
+        align-items: center
+        &__text
+            display: flex
+            flex-direction: row
+            align-items: center
+            font-size: 14px
+            line-height: 16px
+            color: #005FF8
+            font-weight: 400
+            font-family: 'SF Pro Display regular'
+            svg
+                height: 18px
+                min-height: 18px
+                width: 16px
+                margin-right: 8px
+        &__btn
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 16px
+            min-height: 16px
+            width: 16px
+            &.is-prev
+                margin-right: 12px
+                transform: rotate(90deg)
+            &.is-next
+                margin-left: 12px
+                transform: rotate(-90deg)
