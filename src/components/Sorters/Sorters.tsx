@@ -51,6 +51,7 @@ const Sorters = () => {
         return (
             <button 
                 type="button"
+                key={item}
                 className="sorters--content__btn">
                     {text}
                     <DropdownArrowIcon/>

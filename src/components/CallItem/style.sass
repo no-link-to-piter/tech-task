@@ -1,0 +1,30 @@
+.call-item-cell
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    padding: 0 12px
+    button
+        &.is-checkbox
+            height: 16px
+            min-height: 16px
+            width: 16px
+            display: flex
+            justify-content: center
+            align-items: center
+            opacity: 0
+            transition: all .2s ease-in-out
+.call-item
+    display: grid
+    grid-template-columns: 1fr 1fr 2fr 2fr 4fr 3fr 3fr 6fr
+    height: 60px
+    min-height: 60px
+    background: #FFFFFF
+    transition: all .2s ease-in-out
+    border-top: 1px solid #EAF0FA
+    cursor: pointer
+    &:hover
+        background: #F8FAFD
+        button
+            &.is-checkbox
+                opacity: 1

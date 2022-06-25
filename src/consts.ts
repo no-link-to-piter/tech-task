@@ -1,3 +1,5 @@
+export const TECH_TASK_KEY = "testtoken"
+
 export enum SideMenuTabs {
     RESULTS = "RESULTS",
     ORDERS = "ORDERS",
@@ -18,4 +20,12 @@ export enum SortTypes {
     ALL_SOURCES = "ALL_SOURCES",
     ALL_GRADES = "ALL_GRADES",
     ALL_MISTAKES = "ALL_MISTAKES"
+}
+
+export enum FilterDates {
+    DAYS = "DAYS",
+    WEEK = "WEEK",
+    MONTH = "MONTH",
+    YEAR = "YEAR",
+    CUSTOM = "CUSTOM",
 }
