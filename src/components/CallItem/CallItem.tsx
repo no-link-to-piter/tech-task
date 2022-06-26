@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { format } from "date-fns";
 import clsx from "clsx";
+import { useDispatch } from "react-redux";
+import { CSSTransition } from 'react-transition-group';
 
 import { CallModel } from "store/types/call";
+import { getCallRecord } from "store/actions";
+import { AudioPlayer } from "components/common/AudioPlayer";
 import { CallArrowIcon, CheckboxIcon } from "icons";
 
 import "./style.sass"
@@ -14,6 +18,10 @@ type Props = {
 const CallItem = ({
     item
 }: Props) => {
+
+    const dispatch = useDispatch();
+
+    const [isAudioPlayer, setIsAudioPlayer] = useState<boolean>(false)
     
     const getTypeArrow = () => {
         if (typeof item.in_out !== "number") {
@@ -49,13 +57,28 @@ const CallItem = ({
         return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`
     }
 
+    const handleCallHover = () => {
+        if (item.record && item.partnership_id) {
+            // @ts-ignore
+            dispatch(getCallRecord(item.record, item.partnership_id))
+            setIsAudioPlayer(true)
+        }
+    }
+
+    const handleClose = () => {
+        setIsAudioPlayer(false)
+    }
+
     const typeArrow = getTypeArrow();
     const startTime = getStartTime();
     const phoneNumber = getPhoneNumber();
     const duration = getDuration();
 
     return (
-        <div className="call-item">
+        <div 
+            className="call-item"
+            onMouseEnter={handleCallHover}
+            onMouseLeave={handleClose}>
             <div className="call-item-cell">
                 <button
                     type="button"
@@ -81,7 +104,30 @@ const CallItem = ({
             <div className="call-item-cell">
             </div>
             <div className="call-item-cell">
-                {duration}
+                <CSSTransition
+                    in={isAudioPlayer}
+                    timeout={200}
+                    classNames={{
+                        appear: 'audio-player appear',
+                        appearActive: 'audio-player appear-active',
+                        appearDone: 'audio-player appear-done',
+                        enter: 'audio-player enter',
+                        enterActive: 'audio-player enter-active',
+                        enterDone: 'audio-player enter-done',
+                        exit: 'audio-player exit',
+                        exitActive: 'audio-player exit-active',
+                        exitDone: 'audio-player exit-done',
+                    }}
+                    unmountOnExit
+                    >
+                        <div 
+                            className="audio-player">
+                            <AudioPlayer
+                                handleClose={handleClose}
+                                src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"/>
+                        </div>
+                </CSSTransition>
+                <span className="is-duration">{duration}</span>
             </div>
         </div>
     )

@@ -1,12 +1,12 @@
 import React from "react";
 import { CSSTransition } from 'react-transition-group';
+import clsx from "clsx";
 
 import { CalendarIcon, DropdownArrowIcon, PlusIcon } from "icons";
 import { DropdownElement } from "components/common/DropdownElement";
 import { FilterDates } from "consts";
 
 import "./style.sass";
-import clsx from "clsx";
 
 type Props = {
     dateType: string;
@@ -129,7 +129,7 @@ const Filters = ({
                             <DropdownElement 
                                 children={children}/>
                         </div>
-                    </CSSTransition>
+                </CSSTransition>
             </div>
         </div>
     )

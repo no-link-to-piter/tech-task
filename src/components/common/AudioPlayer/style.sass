@@ -1,0 +1,67 @@
+.audio-player
+    display: flex
+    flex-direction: row
+    align-items: center
+    background: #EAF0FA
+    border-radius: 48px
+    height: 48px
+    min-height: 48px
+    padding: 0 16px
+    width: 352px
+    opacity: 0
+    transition: all .2s ease-in-out
+    position: relative
+    z-index: 100
+    &__current-time
+        font-weight: 400
+        font-size: 15px
+        line-height: 100%
+        color: #122945
+        font-family: 'SF Pro Display regular'
+        width: 42px
+        text-align: center
+        position: absolute
+        left: 16px
+        top: 50%
+        transform: translateY(-50%)
+    &__progress
+      flex: 1
+      border-radius: 50px
+      height: 4px
+      width: 164px
+      display: flex
+      align-items: center
+      cursor: pointer
+      background: #ADBFDF
+    &.enter
+        opacity: 0
+    &.enter-done
+        opacity: 1
+    &__play-btn
+        height: 24px
+        min-height: 24px
+        width: 24px
+        position: relative
+        margin-left: 48px
+        margin-right: 8px
+        background: #FFFFFF
+        border-radius: 50%
+        svg
+            position: absolute
+            top: 50%
+            &.pause-icon
+                left: 50%
+                transform: translate(-50%, -50%)
+            &.play-icon
+                left: 9px
+                transform: translateY(-50%)
+    &__download-btn
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-left: 18px
+    &__close-btn
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-left: 12px

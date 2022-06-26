@@ -26,7 +26,7 @@ export default class ServerRequestService {
         console.log(postParams)
 
         // @ts-ignore
-        if (method === 'GET' && getParams.record) {
+        if (method === 'POST' && getParams.record) {
             params.headers['Content-Type'] = 'audio/mpeg, audio/x-mpeg, audio/x-mpeg-3, audio/mpeg3';
             params.headers['Content-Transfer-Encoding'] = 'binary';
             params.headers['Content-Disposition'] = 'filename="record.mp3"'
