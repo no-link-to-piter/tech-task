@@ -3,6 +3,7 @@
     flex-direction: row
     align-items: center
     justify-content: space-between
+    z-index: 980
     &--search
         display: flex
         flex-direction: row
@@ -72,5 +73,10 @@
             flex-direction: row
             align-items: center
             margin-left: 32px
+            position: relative
+            z-index: 980
+            transition: all .2s ease-in-out
             svg
                 margin-left: 8px
+            &.is-active
+                color: #002CFB

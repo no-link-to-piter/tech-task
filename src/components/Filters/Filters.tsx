@@ -39,19 +39,37 @@ const Filters = ({
         }
     }
 
-    const keys = Object.keys(FilterDates);
+    const handlePrevClick = () => {
+        const keys = Object.keys(FilterDates);
+        const curInd = keys.indexOf(dateType);
+        if (curInd > 0) {
+            setDateRange(keys[curInd - 1])
+        } else {
+            setDateRange(keys[keys.length - 2])
+        }
+    }
 
-    const children = keys.map(item => {
+    const handleNextClick = () => {
+        const keys = Object.keys(FilterDates);
+        const curInd = keys.indexOf(dateType);
+        if (curInd < keys.length - 2) {
+            setDateRange(keys[curInd + 1])
+        } else {
+            setDateRange(keys[0])
+        }
+    }
+
+    const children = Object.keys(FilterDates).map(item => {
         const content = getDropdownItemContent(item);
         if (content) {
             return (
-                <button
-                    type="button" 
+                <div
+                    role="presentation" 
                     key={item}
                     className={clsx("dropdown-element--item", dateType === item && "is-active")}
                     onClick={() => setDateRange(item)}>
                         {content}
-                </button>
+                </div>
             )
         }
         return null;
@@ -72,7 +90,8 @@ const Filters = ({
             <div className="filters--calendar">
                 <button
                     type="button"
-                    className="filters--calendar__btn is-prev">
+                    className="filters--calendar__btn is-prev"
+                    onClick={handlePrevClick}>
                         <DropdownArrowIcon/>
                 </button>
                 <button 
@@ -84,7 +103,8 @@ const Filters = ({
                 </button>
                 <button
                     type="button"
-                    className="filters--calendar__btn is-next">
+                    className="filters--calendar__btn is-next"
+                    onClick={handleNextClick}>
                         <DropdownArrowIcon/>
                 </button>
                 <CSSTransition

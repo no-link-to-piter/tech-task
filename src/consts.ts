@@ -29,3 +29,9 @@ export enum FilterDates {
     YEAR = "YEAR",
     CUSTOM = "CUSTOM",
 }
+
+export enum FilterCalls {
+    ALL = "ALL",
+    INCOMING = "INCOMING",
+    OUTGOING = "OUTGOING",
+}
