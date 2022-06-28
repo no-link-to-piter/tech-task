@@ -76,23 +76,27 @@ const MainContainer = () => {
     }
 
     const setCallFilter = (value: string) => {
-        if (value === FilterCalls.ALL) {
-            setFilters({
-                date_start: filters.date_start,
-                date_end: filters.date_end
-            })
-        }
-        if (value === FilterCalls.INCOMING) {
-            setFilters({
-                ...filters,
-                in_out: 1
-            })
-        }
-        if (value === FilterCalls.OUTGOING) {
-            setFilters({
-                ...filters,
-                in_out: 0
-            })
+        switch(value) {
+            case FilterCalls.ALL:
+                setFilters({
+                    date_start: filters.date_start,
+                    date_end: filters.date_end
+                });
+                break;
+            case FilterCalls.INCOMING:
+                setFilters({
+                    ...filters,
+                    in_out: 1
+                })
+                    break;
+            case FilterCalls.OUTGOING:
+                setFilters({
+                    ...filters,
+                    in_out: 0
+                });
+                break;
+            default: 
+                break;
         }
     }
     
@@ -127,8 +131,6 @@ const MainContainer = () => {
     ]);
 
     const callFilter = getCallFilter();
-
-    console.log(isCallsDropdown)
 
     return (
         <div className="container">

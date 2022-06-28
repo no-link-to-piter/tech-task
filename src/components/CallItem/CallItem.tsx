@@ -29,9 +29,8 @@ const CallItem = ({
                 <div className="call-item-cell"/>
             );
         }
-        const isGood = item.status.toLowerCase() === "дозвонился"
         return (
-            <div className={clsx("call-item-cell is-arrow", item.in_out && "is-incoming" || "is-outgoing", isGood && "is-good" || "is-not-good")}>
+            <div className={clsx("call-item-cell is-arrow", item.in_out && "is-incoming" || "is-outgoing", item.status.toLowerCase() === "дозвонился" && "is-good" || "is-not-good")}>
                 <CallArrowIcon/>
             </div>
         )

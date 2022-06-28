@@ -19,7 +19,6 @@ const AudioPlayer = ({
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [duration, setDuration] = useState<number | null>(null);
     const [currentTime, setCurrentTime] = useState<number | null>(null);
-    const [clickedTime, setClickedTime] = useState<number | null>(null);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const barRef = useRef<HTMLDivElement | null>(null);
@@ -69,7 +68,6 @@ const AudioPlayer = ({
 
     /* eslint-disable */
     useEffect(() => {    
-        // state setters wrappers
         const setAudioData = () => {
             setDuration(audioRef.current?.duration || null);
             setCurrentTime(audioRef.current?.currentTime || null);
@@ -77,18 +75,9 @@ const AudioPlayer = ({
 
         const setAudioTime = () => setCurrentTime(audioRef.current?.currentTime || null);
 
-        // DOM listeners: update React state on DOM events
         audioRef.current?.addEventListener("loadeddata", setAudioData);
         audioRef.current?.addEventListener("timeupdate", setAudioTime);
 
-        // React state listeners: update DOM on React state changes
-        isPlaying ? audioRef.current?.play() : audioRef.current?.pause();
-
-        if (clickedTime && clickedTime !== currentTime) {
-            audioRef.current!.currentTime = clickedTime;
-            setClickedTime(null);
-        } 
-    
         return () => {
           audioRef.current?.removeEventListener("loadeddata", setAudioData);
           audioRef.current?.removeEventListener("timeupdate", setAudioTime);
